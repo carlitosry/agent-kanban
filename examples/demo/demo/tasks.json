@@ -1,0 +1,308 @@
+[
+  {
+    "id": "T01",
+    "title": "Define the note data model",
+    "description": "Pure domain type and validation for notes.",
+    "plan": "docs/plan-notes.md",
+    "section": "§1",
+    "phase": "Foundation",
+    "wave": 0,
+    "assignee": "hugo",
+    "depends_on": [],
+    "owns_files": [
+      "src/core/note.ts",
+      "test/core/note.test.ts"
+    ],
+    "acceptance": [
+      "Note type with id, title, body, tags",
+      "Validation rejects empty titles"
+    ],
+    "verify": [
+      "npm run typecheck",
+      "npm test"
+    ],
+    "needs_ui_evidence": false
+  },
+  {
+    "id": "T02",
+    "title": "Add configuration loader",
+    "description": "Typed configuration read once at start-up.",
+    "plan": "docs/plan-notes.md",
+    "section": "§2",
+    "phase": "Foundation",
+    "wave": 0,
+    "assignee": "fran",
+    "depends_on": [],
+    "owns_files": [
+      "src/config.ts",
+      "test/config.test.ts"
+    ],
+    "acceptance": [
+      "Reads PORT and DATA_DIR from the environment",
+      "Invalid values fail with a clear message"
+    ],
+    "verify": [
+      "npm run typecheck",
+      "npm test"
+    ],
+    "needs_ui_evidence": false
+  },
+  {
+    "id": "T03",
+    "title": "Notes repository on JSON files",
+    "description": "File-backed repository behind a small interface.",
+    "plan": "docs/plan-notes.md",
+    "section": "§3",
+    "phase": "Backend",
+    "wave": 1,
+    "assignee": "hugo",
+    "depends_on": [
+      "T01"
+    ],
+    "owns_files": [
+      "src/store/notes-store.ts",
+      "test/store/notes-store.test.ts"
+    ],
+    "acceptance": [
+      "Create, list, update and delete notes",
+      "Concurrent writes do not corrupt the file"
+    ],
+    "verify": [
+      "npm run typecheck",
+      "npm test"
+    ],
+    "needs_ui_evidence": false
+  },
+  {
+    "id": "T04",
+    "title": "REST routes for notes",
+    "description": "HTTP layer over the repository.",
+    "plan": "docs/plan-notes.md",
+    "section": "§4",
+    "phase": "Backend",
+    "wave": 1,
+    "assignee": "fran",
+    "depends_on": [
+      "T01",
+      "T02"
+    ],
+    "owns_files": [
+      "src/server/notes-routes.ts",
+      "test/server/notes-routes.test.ts"
+    ],
+    "acceptance": [
+      "Every route returns a documented error code",
+      "Input validated with a schema"
+    ],
+    "verify": [
+      "npm run typecheck",
+      "npm test"
+    ],
+    "needs_ui_evidence": false
+  },
+  {
+    "id": "T05",
+    "title": "Search by tag",
+    "description": "Pure search function used by the routes.",
+    "plan": "docs/plan-notes.md",
+    "section": "§5",
+    "phase": "Backend",
+    "wave": 1,
+    "assignee": "kai",
+    "depends_on": [
+      "T01"
+    ],
+    "owns_files": [
+      "src/core/search.ts",
+      "test/core/search.test.ts"
+    ],
+    "acceptance": [
+      "Tag filter is case-insensitive",
+      "Empty filter returns all notes"
+    ],
+    "verify": [
+      "npm run typecheck",
+      "npm test"
+    ],
+    "needs_ui_evidence": false
+  },
+  {
+    "id": "T06",
+    "title": "Choose export format",
+    "description": "Needs a product decision before implementation.",
+    "plan": "docs/plan-notes.md",
+    "section": "§6",
+    "phase": "Backend",
+    "wave": 1,
+    "assignee": "hugo",
+    "depends_on": [
+      "T01"
+    ],
+    "owns_files": [
+      "docs/export-format.md"
+    ],
+    "acceptance": [
+      "Format decided and documented"
+    ],
+    "verify": [
+      "npm run typecheck",
+      "npm test"
+    ],
+    "needs_ui_evidence": false
+  },
+  {
+    "id": "T07",
+    "title": "Notes list screen",
+    "description": "First UI screen, read-only.",
+    "plan": "docs/plan-notes.md",
+    "section": "§7",
+    "phase": "Frontend",
+    "wave": 1,
+    "assignee": "fran",
+    "depends_on": [
+      "T01"
+    ],
+    "owns_files": [
+      "src/web/NotesList.tsx",
+      "test/web/notes-list.test.ts"
+    ],
+    "acceptance": [
+      "Lists notes with their tags",
+      "Works at 390 px and 1280 px"
+    ],
+    "verify": [
+      "npm run typecheck",
+      "npm test"
+    ],
+    "needs_ui_evidence": true
+  },
+  {
+    "id": "T08",
+    "title": "Note editor screen",
+    "description": "Form to create and edit notes.",
+    "plan": "docs/plan-notes.md",
+    "section": "§8",
+    "phase": "Frontend",
+    "wave": 2,
+    "assignee": "kai",
+    "depends_on": [
+      "T03",
+      "T07"
+    ],
+    "owns_files": [
+      "src/web/NoteEditor.tsx",
+      "test/web/note-editor.test.ts"
+    ],
+    "acceptance": [
+      "Create and edit a note",
+      "Errors from the API are shown"
+    ],
+    "verify": [
+      "npm run typecheck",
+      "npm test"
+    ],
+    "needs_ui_evidence": true
+  },
+  {
+    "id": "T09",
+    "title": "Wire the routes into the server",
+    "description": "Composition root.",
+    "plan": "docs/plan-notes.md",
+    "section": "§9",
+    "phase": "Integration",
+    "wave": 2,
+    "assignee": "fran",
+    "depends_on": [
+      "T04",
+      "T05"
+    ],
+    "owns_files": [
+      "src/server/index.ts"
+    ],
+    "acceptance": [
+      "Server starts and serves the notes routes",
+      "Search route reachable"
+    ],
+    "verify": [
+      "npm run typecheck",
+      "npm test"
+    ],
+    "needs_ui_evidence": false
+  },
+  {
+    "id": "T10",
+    "title": "Export notes to Markdown",
+    "description": "Depends on the export-format decision.",
+    "plan": "docs/plan-notes.md",
+    "section": "§10",
+    "phase": "Integration",
+    "wave": 2,
+    "assignee": "hugo",
+    "depends_on": [
+      "T06",
+      "T03"
+    ],
+    "owns_files": [
+      "src/export/markdown.ts",
+      "test/export/markdown.test.ts"
+    ],
+    "acceptance": [
+      "Export follows the chosen format"
+    ],
+    "verify": [
+      "npm run typecheck",
+      "npm test"
+    ],
+    "needs_ui_evidence": false
+  },
+  {
+    "id": "T11",
+    "title": "End-to-end tests for notes",
+    "description": "Browser tests over the real app.",
+    "plan": "docs/plan-notes.md",
+    "section": "§11",
+    "phase": "Quality",
+    "wave": 3,
+    "assignee": "kai",
+    "depends_on": [
+      "T08",
+      "T09"
+    ],
+    "owns_files": [
+      "test/e2e/notes.spec.ts"
+    ],
+    "acceptance": [
+      "Create, edit, search and delete are covered"
+    ],
+    "verify": [
+      "npm run typecheck",
+      "npm test"
+    ],
+    "needs_ui_evidence": true
+  },
+  {
+    "id": "T12",
+    "title": "User documentation",
+    "description": "README for the sample app.",
+    "plan": "docs/plan-notes.md",
+    "section": "§12",
+    "phase": "Quality",
+    "wave": 3,
+    "assignee": "fran",
+    "depends_on": [
+      "T09",
+      "T10"
+    ],
+    "owns_files": [
+      "README.md"
+    ],
+    "acceptance": [
+      "Install, run and API documented"
+    ],
+    "verify": [
+      "npm run typecheck",
+      "npm test"
+    ],
+    "needs_ui_evidence": false
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "id": "demo",
+  "title": "Notes app (demo)",
+  "description": "Sample board: a small notes app built in waves by agents and people.",
+  "created_at": "2026-10-23T12:14:14.260Z",
+  "plans": [
+    "docs/plan-notes.md"
+  ]
+}

@@ -1,0 +1,23 @@
+{"ts":"2026-10-23T12:14:14.262Z","board":"demo","by":"system","type":"board_created"}
+{"ts":"2026-10-23T12:14:14.443Z","board":"demo","by":"vera","type":"preflight","task":"T01","payload":{"verdict":"approve"},"note":"Deps done, plan matches, no file conflicts"}
+{"ts":"2026-10-23T12:14:14.507Z","board":"demo","by":"hugo","type":"move","task":"T01","from":"todo","to":"in_progress"}
+{"ts":"2026-10-23T12:14:14.573Z","board":"demo","by":"hugo","type":"move","task":"T01","from":"in_progress","to":"in_review","note":"Files touched: see owns_files. npm test: green."}
+{"ts":"2026-10-23T12:14:14.635Z","board":"demo","by":"vera","type":"review","task":"T01","from":"in_review","to":"done","payload":{"verdict":"approve"},"note":"Verified; diff follows the rules"}
+{"ts":"2026-10-23T12:14:14.697Z","board":"demo","by":"vera","type":"preflight","task":"T02","payload":{"verdict":"approve"},"note":"Deps done, plan matches, no file conflicts"}
+{"ts":"2026-10-23T12:14:14.759Z","board":"demo","by":"fran","type":"move","task":"T02","from":"todo","to":"in_progress"}
+{"ts":"2026-10-23T12:14:14.829Z","board":"demo","by":"fran","type":"move","task":"T02","from":"in_progress","to":"in_review","note":"Files touched: see owns_files. npm test: green."}
+{"ts":"2026-10-23T12:14:14.894Z","board":"demo","by":"vera","type":"review","task":"T02","from":"in_review","to":"done","payload":{"verdict":"approve"},"note":"Verified; diff follows the rules"}
+{"ts":"2026-10-23T12:14:14.956Z","board":"demo","by":"vera","type":"preflight","task":"T03","payload":{"verdict":"approve"},"note":"ok"}
+{"ts":"2026-10-23T12:14:15.021Z","board":"demo","by":"hugo","type":"move","task":"T03","from":"todo","to":"in_progress"}
+{"ts":"2026-10-23T12:14:15.081Z","board":"demo","by":"hugo","type":"move","task":"T03","from":"in_progress","to":"in_review","note":"Repository done; npm test green (14 passed)."}
+{"ts":"2026-10-23T12:14:15.147Z","board":"demo","by":"vera","type":"preflight","task":"T04","payload":{"verdict":"approve"},"note":"ok"}
+{"ts":"2026-10-23T12:14:15.210Z","board":"demo","by":"fran","type":"move","task":"T04","from":"todo","to":"in_progress"}
+{"ts":"2026-10-23T12:14:15.273Z","board":"demo","by":"fran","type":"comment","task":"T04","note":"Routes done, still writing error-code tests."}
+{"ts":"2026-10-23T12:14:15.335Z","board":"demo","by":"vera","type":"preflight","task":"T05","payload":{"verdict":"approve"},"note":"ok"}
+{"ts":"2026-10-23T12:14:15.396Z","board":"demo","by":"kai","type":"move","task":"T05","from":"todo","to":"in_progress"}
+{"ts":"2026-10-23T12:14:15.464Z","board":"demo","by":"kai","type":"move","task":"T05","from":"in_progress","to":"in_review","note":"Search implemented."}
+{"ts":"2026-10-23T12:14:15.532Z","board":"demo","by":"vera","type":"review","task":"T05","from":"in_review","to":"in_progress","payload":{"verdict":"changes"},"note":"Tag filter must be case-insensitive; add a test."}
+{"ts":"2026-10-23T12:14:15.604Z","board":"demo","by":"vera","type":"preflight","task":"T06","payload":{"verdict":"approve"},"note":"ok"}
+{"ts":"2026-10-23T12:14:15.670Z","board":"demo","by":"hugo","type":"move","task":"T06","from":"todo","to":"in_progress"}
+{"ts":"2026-10-23T12:14:15.736Z","board":"demo","by":"hugo","type":"block","task":"T06","from":"in_progress","to":"blocked","note":"Cannot decide the export format alone","question":"Should notes export to Markdown, JSON or both? Recommendation: Markdown only for v1."}
+{"ts":"2026-10-23T12:14:15.803Z","board":"demo","by":"vera","type":"preflight","task":"T07","payload":{"verdict":"approve"},"note":"Ready to start"}

@@ -1,0 +1,44 @@
+[
+  {
+    "id": "atlas",
+    "name": "Atlas",
+    "role": "orchestrator",
+    "color": "#4f46e5",
+    "kind": "agent"
+  },
+  {
+    "id": "vera",
+    "name": "Vera",
+    "role": "reviewer",
+    "color": "#be185d",
+    "kind": "agent"
+  },
+  {
+    "id": "hugo",
+    "name": "Hugo",
+    "role": "implementer",
+    "color": "#0f766e",
+    "kind": "agent"
+  },
+  {
+    "id": "fran",
+    "name": "Fran",
+    "role": "implementer",
+    "color": "#b45309",
+    "kind": "agent"
+  },
+  {
+    "id": "kai",
+    "name": "Kai",
+    "role": "implementer",
+    "color": "#1d4ed8",
+    "kind": "agent"
+  },
+  {
+    "id": "ana",
+    "name": "Ana",
+    "role": "human",
+    "color": "#475569",
+    "kind": "human"
+  }
+]
