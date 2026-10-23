@@ -15,7 +15,7 @@ That humans and agents operate the board via API or CLI with the same rules, and
 the CLI writes (watch on `events.jsonl` → SSE).
 
 ## Context
-- Read `agent-kanban/docs/CONTRATO.md` §3, §4, §6, §7: specification. Don't change it; if something is missing, block.
+- Read `agent-kanban/docs/CONTRACT.md` §3, §4, §6, §7: specification. Don't change it; if something is missing, block.
 - Read the actual signature in `src/app/board-service.ts` before using it (reference by path, don't copy its code).
 - `INSTRUCTIONS.md`: composition root without logic (`server/index.ts`), file ≤ 500 lines, TDD.
 - Your files: `src/server/**`, `src/cli/**`, `test/server/**`, `test/cli/**`.

@@ -1,4 +1,4 @@
-// Dev-only mock of the HTTP API (CONTRATO §6) to develop/verify the UI without the real server.
+// Dev-only mock of the HTTP API (CONTRACT §6) to develop/verify the UI without the real server.
 // Run: npx tsx test/web/mock-server.ts   (listens on 127.0.0.1:4090, or MOCK_PORT)
 import { createServer, type ServerResponse } from "node:http";
 import type { Agent, BoardState, KanbanEvent, TaskSeed, TaskState, TaskView } from "../../src/web/types.js";
@@ -17,14 +17,14 @@ const seed = (id: string, title: string, wave: number, phase: string, assignee: 
 const tasks = new Map<string, TaskView>();
 const mk = (s: TaskSeed, state: TaskState, extra: Partial<TaskView> = {}) =>
   tasks.set(s.id, { ...s, state, review_rounds: 0, evidence: [], history: [{ ts: now(), board: "demo", task: s.id, by: "ana", type: "task_created" }], ready: false, ...extra });
-mk(seed("T1", "Modelo de dominio", 1, "Fase 1 · Núcleo", "fran"), "done", { evidence: ["review.md"], review: { verdict: "approve", by: "rev", note: "Todo correcto", ts: now() } });
-mk(seed("T2", "Almacén de eventos con bloqueo", 1, "Fase 1 · Núcleo", "fran"), "in_progress");
-mk(seed("T3", "Rutas REST", 2, "Fase 2 · Servidor", "fran", ["T1"]), "in_review", { review_rounds: 1 });
-mk(seed("T4", "Interfaz del tablero", 2, "Fase 2 · Servidor", "fran", ["T1"]), "blocked", { blocked_from: "in_progress", question: "¿Usamos el color corporativo para la columna Bloqueada?", evidence: ["shot-1.svg"] });
-mk(seed("T5", "CLI", 3, "Fase 3 · Entrega", "ana", ["T3"]), "todo");
-mk(seed("T6", "Documentación", 3, "Fase 3 · Entrega", "ana"), "todo");
+mk(seed("T1", "Domain model", 1, "Phase 1 · Core", "fran"), "done", { evidence: ["review.md"], review: { verdict: "approve", by: "rev", note: "All good", ts: now() } });
+mk(seed("T2", "Event store with locking", 1, "Phase 1 · Core", "fran"), "in_progress");
+mk(seed("T3", "REST routes", 2, "Phase 2 · Server", "fran", ["T1"]), "in_review", { review_rounds: 1 });
+mk(seed("T4", "Board interface", 2, "Phase 2 · Server", "fran", ["T1"]), "blocked", { blocked_from: "in_progress", question: "Should we use the brand color for the Blocked column?", evidence: ["shot-1.svg"] });
+mk(seed("T5", "CLI", 3, "Phase 3 · Delivery", "ana", ["T3"]), "todo");
+mk(seed("T6", "Documentation", 3, "Phase 3 · Delivery", "ana"), "todo");
 
-const boards = [{ id: "demo", title: "Demo", description: "Tablero de ejemplo", created_at: now(), plans: ["docs/plan.md"] }];
+const boards = [{ id: "demo", title: "Demo", description: "Sample board", created_at: now(), plans: ["docs/plan.md"] }];
 const clients = new Set<ServerResponse>();
 
 function recompute(): void {
@@ -55,11 +55,11 @@ function handle(method: string, path: string, body: any): unknown {
   }
   if (method === "POST" && path === "/api/boards/demo/agents") { agents.push(body); return body; }
   if ((m = path.match(/^\/api\/boards\/demo\/agents\/([^/]+)$/)) && method === "PATCH") {
-    const a = agents.find((x) => x.id === m![1]); if (!a) throw new HttpError(404, "not_found", "Agente no existe");
+    const a = agents.find((x) => x.id === m![1]); if (!a) throw new HttpError(404, "not_found", "Agent not found");
     Object.assign(a, body); return a;
   }
   if ((m = path.match(/^\/api\/boards\/demo\/tasks\/([^/]+)(?:\/(\w+))?$/))) {
-    const t = tasks.get(m[1]!); if (!t) throw new HttpError(404, "not_found", "Tarea no existe");
+    const t = tasks.get(m[1]!); if (!t) throw new HttpError(404, "not_found", "Task not found");
     const by: string = body.by;
     switch (`${method} ${m[2] ?? ""}`) {
       case "PATCH ": Object.assign(t, body.patch); emit({ task: t.id, by, type: "task_updated", payload: body.patch }); break;
@@ -97,7 +97,7 @@ createServer((req, res) => {
   }
   if (url.pathname.startsWith("/api/boards/demo/evidence/")) {
     const f = url.pathname.split("/").pop()!;
-    if (f.endsWith(".md")) { res.writeHead(200, { "content-type": "text/markdown" }); res.end("# Revisión\n\n- Criterios cumplidos\n- Sin hallazgos"); }
+    if (f.endsWith(".md")) { res.writeHead(200, { "content-type": "text/markdown" }); res.end("# Review\n\n- Criteria met\n- No findings"); }
     else { res.writeHead(200, { "content-type": "image/svg+xml" }); res.end(SVG); }
     return;
   }

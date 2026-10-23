@@ -15,7 +15,7 @@ SSE and lets a person manage boards, tasks and agents: block/unblock, request ch
 from blocked tasks.
 
 ## Context
-- Read `agent-kanban/docs/CONTRATO.md` §1, §3, §6, §8: the types and API you consume. Don't change them; if something
+- Read `agent-kanban/docs/CONTRACT.md` §1, §3, §6, §8: the types and API you consume. Don't change them; if something
   is missing, block.
 - Interface requirements: `docs/PROMPT_ORQUESTACION_KANBAN.md` §A.5 "Interfaz" (read only that section).
 - Style reference: the admin of `booking/src/client/` (Preact + Tailwind). Look at one component, not all of them.

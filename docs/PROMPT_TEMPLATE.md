@@ -2,7 +2,7 @@
 
 Generic prompt to start an orchestrated, board-driven piece of work in any project. Replace every `<PLACEHOLDER>`.
 Paste everything under "Prompt" as the first message of a fresh agent session at the root of your project. Method
-details: [`METODO.md`](./METODO.md).
+details: [`METHOD.md`](./METHOD.md).
 
 ## How to use
 
@@ -43,7 +43,7 @@ of the demo board (light and dark, desktop and mobile), and a CLI `move` reflect
 ### Stage B: plan to board
 
 1. Create the board: `agent-kanban init <BOARD_ID> --title "<TITLE>" --data-dir <DATA_DIR>`.
-2. Convert the plans into tasks following `METODO.md` section 6: one task per deliverable; stable ids; `plan`, `section`,
+2. Convert the plans into tasks following `METHOD.md` section 6: one task per deliverable; stable ids; `plan`, `section`,
    `phase`; waves from dependencies; `owns_files` with **no file shared by two tasks of the same wave**; `acceptance` and
    `verify` on every task; `needs_ui_evidence` for anything a user sees; one assignee each; production tasks go to a
    human.

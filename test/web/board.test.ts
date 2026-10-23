@@ -91,7 +91,7 @@ describe("theme", () => {
 });
 
 describe("forms", () => {
-  it("slugifies accents", () => expect(slugify("Tablero Pérez #1")).toBe("tablero-perez-1"));
+  it("slugifies accents", () => expect(slugify("Café Board #1")).toBe("cafe-board-1"));
   it("splits lines", () => expect(splitLines("a\n\n b \n")).toEqual(["a", "b"]));
   it("reports problems for an empty form", () => {
     const r = formToTask(emptyTaskForm());

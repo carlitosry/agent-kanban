@@ -16,7 +16,7 @@ computed from `events.jsonl`, and concurrent writes without corruption. The CLI 
 `BoardService`.
 
 ## Context (load on demand, not all at once)
-- Read `agent-kanban/docs/CONTRATO.md` §1–5 first: it is your specification. Don't change it; if something is missing, block.
+- Read `agent-kanban/docs/CONTRACT.md` §1–5 first: it is your specification. Don't change it; if something is missing, block.
 - Engineering rules: `INSTRUCTIONS.md` (layers, file ≤ 500 lines, TDD).
 - Check the rest of `docs/PROMPT_ORQUESTACION_KANBAN.md` (A.3, A.4, A.6) only if the contract is not enough.
 - Your files: `agent-kanban/src/core/**`, `src/store/**`, `src/app/**`, `test/core/**`, `test/store/**`, `test/app/**`.

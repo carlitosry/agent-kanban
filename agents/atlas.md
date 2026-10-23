@@ -15,7 +15,7 @@ Turn plans into a board, run waves with subagents in parallel (max. 4 implemente
 facts to the human.
 
 ## Context
-- Method: `docs/PROMPT_ORQUESTACION_KANBAN.md` and, when it exists, `agent-kanban/docs/METODO.md`.
+- Method: `docs/PROMPT_ORQUESTACION_KANBAN.md` and, when it exists, `agent-kanban/docs/METHOD.md`.
 - Live state: `agent-kanban status <board>` and `next <board>`. Don't keep the state in your head: query it.
 - Keep your context clean: each subagent receives only its brief and returns a summary ≤ 300 words; details live in
   files (`review.md`, events), which you point to by path.

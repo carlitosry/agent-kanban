@@ -57,8 +57,8 @@ agent-kanban validate my-feature
 agent-kanban up my-feature
 ```
 
-Methodology (how to turn a plan into tasks, roles, review protocol): [`docs/METODO.md`](docs/METODO.md).
-Reusable orchestration prompt: [`docs/PROMPT_PLANTILLA.md`](docs/PROMPT_PLANTILLA.md).
+Methodology (how to turn a plan into tasks, roles, review protocol): [`docs/METHOD.md`](docs/METHOD.md).
+Reusable orchestration prompt: [`docs/PROMPT_TEMPLATE.md`](docs/PROMPT_TEMPLATE.md).
 
 ## Configuration
 
@@ -125,7 +125,7 @@ JSON over `http://127.0.0.1:4090`. The actor goes in the body (`by`) or in the `
 | `GET /api/boards/:id/evidence/:taskId/:file` | file |
 
 Error codes: `validation_error` 400, `not_assignee` 403, `not_found` 404, `invalid_transition` 409,
-`dependencies_pending` 409, `preflight_required` 409. Full contract: [`docs/CONTRATO.md`](docs/CONTRATO.md).
+`dependencies_pending` 409, `preflight_required` 409. Full contract: [`docs/CONTRACT.md`](docs/CONTRACT.md).
 
 ## Data folder
 

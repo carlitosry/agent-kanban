@@ -1,4 +1,4 @@
-// Mirror of docs/CONTRATO.md section 1 (kept local so the UI does not depend on src/core).
+// Mirror of docs/CONTRACT.md section 1 (kept local so the UI does not depend on src/core).
 export type TaskState = "todo" | "in_progress" | "in_review" | "done" | "blocked";
 export type AgentKind = "agent" | "human";
 export type AgentRole = "orchestrator" | "reviewer" | "implementer" | "human";
